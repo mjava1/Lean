@@ -96,6 +96,7 @@ namespace QuantConnect.Algorithm
                                 false,
                                 0,
                                 configs.IsExtendedMarketHours());
+                                Error($"COULD NOT FIND UNDERLYING? {underlyingSecurity.Symbol.Value} - {underlyingSecurity.DataNormalizationMode}");
                         }
 
                         // set data mode raw and default volatility model
@@ -527,14 +528,9 @@ namespace QuantConnect.Algorithm
             // force underlying securities to be raw data mode
             var configs = SubscriptionManager.SubscriptionDataConfigService
                 .GetSubscriptionDataConfigs(security.Symbol);
-
             if (configs.DataNormalizationMode() != DataNormalizationMode.Raw)
             {
-                if (configs.Any())
-                {
-                    Debug($"Warning: The {security.Symbol.Value} equity security was set the raw price normalization mode to work with options.");
-                }
-
+                throw new Exception($"Warning: The {security.Symbol.Value} equity security was set the raw price normalization mode to work with options.");
                 configs.SetDataNormalizationMode(DataNormalizationMode.Raw);
                 // For backward compatibility we need to refresh the security DataNormalizationMode Property
                 security.RefreshDataNormalizationModeProperty();
