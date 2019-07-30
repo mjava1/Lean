@@ -135,6 +135,9 @@
     <Reference Include="IKVM.Runtime.JNI, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
       <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.JNI.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\abraxas-capital\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net40\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+    </Reference>
     <Reference Include="NATS.Client, Version=0.8.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NATS.Client.0.8.1\lib\net45\NATS.Client.dll</HintPath>
     </Reference>
@@ -150,6 +153,9 @@
     </Reference>
     <Reference Include="QuantConnect.IBAutomater, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\QuantConnect.IBAutomater.1.0.4\lib\net45\QuantConnect.IBAutomater.exe</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\..\abraxas-capital\packages\RabbitMQ.Client.5.1.0\lib\net451\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
@@ -280,12 +286,10 @@
     <Compile Include="Bitfinex\OrderBook.cs" />
     <Compile Include="Bitmex\BestBidAskUpdatedEventArgs.cs" />
     <Compile Include="Bitmex\BitmexBrokerage.cs" />
-    <Compile Include="Bitmex\BitmexBrokerage.Messaging.cs" />
-    <Compile Include="Bitmex\BitmexBrokerage.Utility.cs" />
     <Compile Include="Bitmex\BitmexBrokerageFactory.cs" />
-    <Compile Include="Bitmex\BitmexSymbolMapper.cs" />
+    <Compile Include="Bitmex\BitemexTradesSubscribe.cs" />
     <Compile Include="Bitmex\Messages.cs" />
-    <Compile Include="Bitmex\OrderBook.cs" />
+    <Compile Include="Bitmex\RabbitMqHelper.cs" />
     <Compile Include="Brokerage.cs" />
     <Compile Include="BrokerageException.cs" />
     <Compile Include="BrokerageFactory.cs" />

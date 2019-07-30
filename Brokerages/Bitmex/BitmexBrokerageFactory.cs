@@ -60,14 +60,16 @@ namespace QuantConnect.Brokerages.Bitmex
 
             var priceProvider = new ApiPriceProvider(job.UserId, job.UserToken);
 
-            var brokerage = new BitmexBrokerage(
-                job.BrokerageData["bitmex-url"],
-                job.BrokerageData["bitmex-rest"],
-                job.BrokerageData["bitmex-api-key"],
-                job.BrokerageData["bitmex-api-secret"],
-                algorithm,
-                priceProvider);
-            
+            var brokerage = new BitmexBrokerage();
+
+            //var brokerage = new BitmexBrokerage(
+            //    job.BrokerageData["bitmex-url"],
+            //    job.BrokerageData["bitmex-rest"],
+            //    job.BrokerageData["bitmex-api-key"],
+            //    job.BrokerageData["bitmex-api-secret"],
+            //    algorithm,
+            //    priceProvider);
+
             Composer.Instance.AddPart<IDataQueueHandler>(brokerage);
 
             return brokerage;
