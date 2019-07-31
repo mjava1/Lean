@@ -26,6 +26,8 @@ namespace QuantConnect.Brokerages.Bitmex
             _queue = "trades_xbt";
         }
 
+        public bool ConnectionIsOpen => _connection.IsOpen;
+
         public void SetupConnection(Action connectionErrorCallback = null)
         {
             _connectionErrorCallback = connectionErrorCallback;
@@ -38,6 +40,7 @@ namespace QuantConnect.Brokerages.Bitmex
             //_log.Info("Connecting to RabbitMQ...");
 
             _connection = connection;
+            
             _connection.ConnectionShutdown += ConnectionShutdown;
             _channel = _connection.CreateModel();
 

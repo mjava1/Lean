@@ -26,13 +26,8 @@ namespace QuantConnect.Brokerages.Bitmex
             _bitmexTradesSubscribe = new BitemexTradesSubscribe();
         }
 
-        public override bool IsConnected
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public override bool IsConnected => _bitmexTradesSubscribe.ConnectionIsOpen;
+
 
         public override bool CancelOrder(Order order)
         {
