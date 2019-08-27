@@ -98,27 +98,27 @@ namespace QuantConnect.Brokerages.Bitmex
             }
         }
 
-        public bool ProcessMessage(object handler, object message, CancellationToken cancellationToken)
-        {
-            bool result;
-            int attempts = 0;
+        //public bool ProcessMessage(object handler, object message, CancellationToken cancellationToken)
+        //{
+        //    bool result;
+        //    int attempts = 0;
 
-            var method = handler.GetType().GetMethod("HandleMessage");
-            do
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                result = (bool)method.Invoke(handler, new[] { message });
-                if (!result)
-                {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    Thread.Sleep(TimeSpan.FromSeconds(5));
-                    attempts++;
-                    //_log.Info($"Failed to process message, retrying. Count is {attempts}");
-                }
-            } while (!result && attempts < 3);
+        //    var method = handler.GetType().GetMethod("HandleMessage");
+        //    do
+        //    {
+        //        cancellationToken.ThrowIfCancellationRequested();
+        //        result = (bool)method.Invoke(handler, new[] { message });
+        //        if (!result)
+        //        {
+        //            cancellationToken.ThrowIfCancellationRequested();
+        //            Thread.Sleep(TimeSpan.FromSeconds(5));
+        //            attempts++;
+        //            //_log.Info($"Failed to process message, retrying. Count is {attempts}");
+        //        }
+        //    } while (!result && attempts < 3);
 
-            return result;
-        }
+        //    return result;
+        //}
 
         private Trade DeserializeMessage(string messageJson, BasicDeliverEventArgs e)
         {        

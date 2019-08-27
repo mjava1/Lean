@@ -216,6 +216,8 @@ namespace QuantConnect.Lean.Engine
                     // initialize the default brokerage message handler
                     algorithm.BrokerageMessageHandler = factory.CreateBrokerageMessageHandler(algorithm, job, _systemHandlers.Api);
 
+                    //Thread.Sleep(333300);
+
                     //Initialize the internal state of algorithm and job: executes the algorithm.Initialize() method.
                     initializeComplete = _algorithmHandlers.Setup.Setup(new SetupHandlerParameters(dataManager.UniverseSelection, algorithm, brokerage, job, _algorithmHandlers.Results, _algorithmHandlers.Transactions, _algorithmHandlers.RealTime));
 
